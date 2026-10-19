@@ -182,6 +182,44 @@ def move(src, dstdir, name, payload, fname):
     return dst
 
 
+def write_status(note=''):
+    """바깥(Claude 등)에서 raw 주소로 읽을 수 있는 현황 파일.
+
+    raw.githubusercontent.com 은 폴더 목록을 못 주기 때문에 목록을 파일로 남긴다."""
+    qroot = os.path.join(ROOT, 'queue')
+    pending = []
+    for d in sorted(os.listdir(qroot)) if os.path.isdir(qroot) else []:
+        qd = os.path.join(qroot, d)
+        if not os.path.exists(os.path.join(qd, 'post.json')):
+            continue
+        try:
+            post = json.load(open(os.path.join(qd, 'post.json'), encoding='utf-8'))
+        except Exception:
+            post = {}
+        pending.append({'id': d, 'title': post.get('title', ''),
+                        'publish_on': due_on(qd),
+                        'cards': len(post.get('cards') or [])})
+    proot = os.path.join(ROOT, 'posted')
+    posted = sorted(os.listdir(proot)) if os.path.isdir(proot) else []
+    last = None
+    if posted:
+        try:
+            last = json.load(open(os.path.join(proot, posted[-1], 'result.json'),
+                                  encoding='utf-8'))
+            last['id'] = posted[-1]
+        except Exception:
+            last = {'id': posted[-1]}
+    out = {'checked_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+           'today_kst': today_kst(),
+           'pending_count': len(pending),
+           'pending': pending,
+           'posted_count': len(posted),
+           'last_posted': last,
+           'note': note}
+    with open(os.path.join(ROOT, 'status.json'), 'w', encoding='utf-8') as f:
+        json.dump(out, f, ensure_ascii=False, indent=1)
+
+
 def main():
     if not TOKEN:
         print('IG_ACCESS_TOKEN 비밀값이 없습니다. 저장소 Settings → Secrets 에 넣어 주세요.')
@@ -193,6 +231,7 @@ def main():
     if not allids:
         print('대기 중인 것이 없습니다.')
         print('::warning::queue/ 가 비었습니다 — 다음 편을 만들어 넣어 주세요.')
+        write_status('대기 없음')
         return 0
 
     today = today_kst()
@@ -207,6 +246,7 @@ def main():
         print(f'   · {d} → {on} 에 나갑니다')
     if not ids:
         print('오늘 나갈 것이 없습니다.')
+        write_status('오늘 차례인 것이 없음')
         return 0
 
     ids = [d for d, _ in ids][:LIMIT]
@@ -236,6 +276,7 @@ def main():
             print(f'   ✗ 실패 — {e}')
 
     print(f'\n끝. 성공 {len(ids)-failures} / 실패 {failures}')
+    write_status(f'성공 {len(ids)-failures} / 실패 {failures}')
     return 1 if failures else 0
 
 

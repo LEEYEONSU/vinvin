@@ -1,0 +1,46 @@
+{
+ "checked_at": "2026-10-19T08:41:52Z",
+ "today_kst": "2026-10-19",
+ "pending_count": 5,
+ "pending": [
+  {
+   "id": "2026-10-22-g11",
+   "title": "연재만화 제11화 「밭에서는 기자도 손이 있다」",
+   "publish_on": "2026-10-22",
+   "cards": 10
+  },
+  {
+   "id": "2026-11-14-hos",
+   "title": "속보판 「촛불이 꺼지면 낙찰입니다」",
+   "publish_on": "2026-11-14",
+   "cards": 6
+  },
+  {
+   "id": "2026-11-18-h27",
+   "title": "본지 제27호 「세상에서 가장 급한 와인」",
+   "publish_on": "2026-11-18",
+   "cards": 8
+  },
+  {
+   "id": "2026-11-19-g12",
+   "title": "연재만화 제12화 「누보 수송 작전」",
+   "publish_on": "2026-11-19",
+   "cards": 10
+  },
+  {
+   "id": "2026-12-03-h28",
+   "title": "본지 제28호 「와인을 데워 마신 내력」",
+   "publish_on": "2026-12-03",
+   "cards": 8
+  }
+ ],
+ "posted_count": 2,
+ "last_posted": {
+  "media_id": "18072971306730296",
+  "permalink": "https://www.instagram.com/p/Deqzf28FeZS/",
+  "cards": 8,
+  "published_at": "2026-10-19T08:14:48Z",
+  "id": "2026-10-19-h26"
+ },
+ "note": "맥에서 초기 생성"
+}
