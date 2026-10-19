@@ -200,7 +200,8 @@ def write_status(note=''):
                         'publish_on': due_on(qd),
                         'cards': len(post.get('cards') or [])})
     proot = os.path.join(ROOT, 'posted')
-    posted = sorted(os.listdir(proot)) if os.path.isdir(proot) else []
+    posted = sorted(d for d in os.listdir(proot)
+                    if os.path.isdir(os.path.join(proot, d))) if os.path.isdir(proot) else []
     last = None
     if posted:
         try:
