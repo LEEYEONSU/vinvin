@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 """queue/ 에 쌓인 카드 묶음을 인스타그램에 캐러셀로 발행한다.
 
-  queue/<id>/post.json   { "caption": "...", "cards": ["01.jpg", ...] }
+  queue/<id>/post.json   { "caption": "...", "cards": ["01.jpg", ...],
+                           "publish_on": "2026-11-14" }   ← 없으면 언제든 발행
   queue/<id>/01.jpg …
+
+한 번 돌 때 **한 건만** 올린다. publish_on 이 오늘(한국 시각) 이후인 것은 건너뛴다.
+그래서 여러 편을 미리 queue 에 넣어 두면 날짜에 맞춰 하루 한 건씩 나간다.
 
 발행에 성공하면 posted/<id>/ 로 옮기고 result.json 을 남긴다.
 실패하면 failed/<id>/ 로 옮기고 error.json 을 남긴다 — 다음 실행에서 다시 시도하지 않는다.
@@ -18,6 +22,22 @@ SHA = os.environ.get('GITHUB_SHA', 'main').strip()
 GRAPH = 'https://graph.instagram.com'
 V = CFG.get('api_version', 'v25.0')
 IGID = str(CFG.get('ig_user_id') or '')   # resolve_igid() 가 실제 값으로 바꾼다
+LIMIT = max(1, int(os.environ.get('PUBLISH_LIMIT') or 1))
+LOW_QUEUE = 3                              # 남은 대기분이 이보다 적으면 알린다
+
+
+def today_kst():
+    return time.strftime('%Y-%m-%d', time.gmtime(time.time() + 9 * 3600))
+
+
+def due_on(qdir):
+    """이 묶음의 발행 예정일. 없으면 None(= 언제든)."""
+    try:
+        post = json.load(open(os.path.join(qdir, 'post.json'), encoding='utf-8'))
+    except Exception:
+        return None
+    d = str(post.get('publish_on') or post.get('publish_after') or '').strip()
+    return d[:10] if len(d) >= 10 else None
 
 
 def req(url, data=None, timeout=90):
@@ -167,12 +187,31 @@ def main():
         print('IG_ACCESS_TOKEN 비밀값이 없습니다. 저장소 Settings → Secrets 에 넣어 주세요.')
         return 1
     qroot = os.path.join(ROOT, 'queue')
-    ids = sorted(d for d in os.listdir(qroot)
-                 if os.path.isdir(os.path.join(qroot, d))
-                 and os.path.exists(os.path.join(qroot, d, 'post.json')))
-    if not ids:
-        print('발행할 것이 없습니다.')
+    allids = sorted(d for d in os.listdir(qroot)
+                    if os.path.isdir(os.path.join(qroot, d))
+                    and os.path.exists(os.path.join(qroot, d, 'post.json')))
+    if not allids:
+        print('대기 중인 것이 없습니다.')
+        print('::warning::queue/ 가 비었습니다 — 다음 편을 만들어 넣어 주세요.')
         return 0
+
+    today = today_kst()
+    ids, later = [], []
+    for d in allids:
+        on = due_on(os.path.join(qroot, d))
+        (ids if (on is None or on <= today) else later).append((d, on))
+    ids.sort(key=lambda t: (t[1] or '', t[0]))
+
+    print(f'오늘(KST) {today} · 대기 {len(allids)}건 — 발행 가능 {len(ids)}, 예정 {len(later)}')
+    for d, on in later:
+        print(f'   · {d} → {on} 에 나갑니다')
+    if not ids:
+        print('오늘 나갈 것이 없습니다.')
+        return 0
+
+    ids = [d for d, _ in ids][:LIMIT]
+    if len(allids) - len(ids) < LOW_QUEUE:
+        print(f'::warning::이번 건을 빼면 대기분이 {len(allids)-len(ids)}건뿐입니다 — 다음 편을 채워 주세요.')
 
     try:
         resolve_igid()

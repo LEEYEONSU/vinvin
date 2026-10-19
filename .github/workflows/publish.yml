@@ -1,10 +1,16 @@
 name: 인스타 발행
 
+# 매일 한 번 돌면서 queue/ 에서 「오늘 나갈 차례」인 한 건만 올린다.
+# 11:51 UTC = 20:51 KST. 깃허브 사정으로 몇 분 늦을 수 있다.
 on:
-  push:
-    paths:
-      - 'queue/**'
+  schedule:
+    - cron: '51 11 * * *'
   workflow_dispatch:
+    inputs:
+      limit:
+        description: '이번에 올릴 건수 (기본 1)'
+        required: false
+        default: '1'
 
 permissions:
   contents: write
@@ -26,6 +32,7 @@ jobs:
       - name: 발행
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          PUBLISH_LIMIT: ${{ github.event.inputs.limit || '1' }}
         run: python scripts/publish.py
 
       - name: 결과 기록
