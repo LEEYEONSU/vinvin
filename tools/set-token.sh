@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 printf '깃허브 토큰(github_pat_… )을 붙여 넣고 엔터: '
 read -rs TOK; echo
 if [ -z "$TOK" ]; then echo "입력이 없습니다."; exit 1; fi
-git config credential.helper "store --file=$(pwd)/.git/.gitcreds"
+git config credential.helper 'store --file=.git/.gitcreds'   # 상대경로여야 맥·리눅스 양쪽에서 읽힌다
 umask 077
 printf 'https://x-access-token:%s@github.com\n' "$TOK" > .git/.gitcreds
 chmod 600 .git/.gitcreds
