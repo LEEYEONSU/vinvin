@@ -2,6 +2,10 @@ name: 연결 진단
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'diag.trigger'
+      - 'scripts/diag.py'
 
 permissions:
   contents: write
