@@ -1,0 +1,42 @@
+name: 인스타 발행
+
+on:
+  push:
+    paths:
+      - 'queue/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 발행
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python scripts/publish.py
+
+      - name: 결과 기록
+        if: always()
+        run: |
+          git config user.name  "wine-hoeoe bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "기록할 변화 없음"
+          else
+            git commit -m "발행 결과 기록 [skip ci]"
+            git push
+          fi
