@@ -17,7 +17,7 @@ REPO = os.environ.get('GITHUB_REPOSITORY', '').strip()
 SHA = os.environ.get('GITHUB_SHA', 'main').strip()
 GRAPH = 'https://graph.instagram.com'
 V = CFG.get('api_version', 'v25.0')
-IGID = str(CFG['ig_user_id'])
+IGID = str(CFG.get('ig_user_id') or '')   # resolve_igid() 가 실제 값으로 바꾼다
 
 
 def req(url, data=None, timeout=90):
@@ -51,6 +51,25 @@ def retry(fn, tries=3, wait=6, label=''):
             print(f'   · {label} {i+1}번째 실패 — {wait*(i+1)}초 뒤 재시도')
             time.sleep(wait * (i + 1))
     raise RuntimeError(f'{label}: 3회 모두 실패 — {last}')
+
+
+def resolve_igid():
+    """토큰이 가리키는 계정 ID를 직접 물어본다.
+
+    대시보드에 보이는 ID 와 이 경로에서 쓰는 ID 가 다를 수 있어서,
+    설정값을 믿지 않고 매번 확인한다."""
+    global IGID
+    me = req(f'{GRAPH}/{V}/me?' + urllib.parse.urlencode(
+        {'fields': 'user_id,username,account_type', 'access_token': TOKEN}))
+    uid = str(me.get('user_id') or '').strip()
+    if uid:
+        if uid != IGID:
+            print(f'   · 발행 ID 를 {IGID or "(없음)"} → {uid} 로 바꿉니다')
+        IGID = uid
+    elif not IGID:
+        IGID = 'me'
+    print(f'   계정: @{me.get("username")} ({me.get("account_type")}) · ID {IGID}')
+    return me
 
 
 def raw_url(path):
@@ -154,6 +173,12 @@ def main():
     if not ids:
         print('발행할 것이 없습니다.')
         return 0
+
+    try:
+        resolve_igid()
+    except RuntimeError as e:
+        print(f'계정 확인 실패 — {e}')
+        return 1
 
     print(f'{len(ids)}건 발행 시작')
     failures = 0
