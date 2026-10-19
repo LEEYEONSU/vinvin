@@ -1,0 +1,80 @@
+{
+ "checked_at": "2026-10-19T08:11:54Z",
+ "api_version": "v25.0",
+ "token_present": true,
+ "token_tail": "WQZDZD",
+ "config_ig_user_id": "17841459304101379",
+ "probes": [
+  {
+   "label": "me (버전 있음)",
+   "ok": true,
+   "data": {
+    "user_id": "17841439304101379",
+    "username": "vinoetvin",
+    "account_type": "MEDIA_CREATOR",
+    "id": "27898936983113150"
+   }
+  },
+  {
+   "label": "me (버전 없음)",
+   "ok": true,
+   "data": {
+    "user_id": "17841439304101379",
+    "username": "vinoetvin",
+    "account_type": "MEDIA_CREATOR",
+    "id": "27898936983113150"
+   }
+  },
+  {
+   "label": "me/content_publishing_limit",
+   "ok": true,
+   "data": {
+    "data": [
+     {
+      "config": {
+       "quota_total": 100,
+       "quota_duration": 86400
+      },
+      "quota_usage": 0
+     }
+    ]
+   }
+  },
+  {
+   "label": "17841459304101379 (설정값)",
+   "ok": false,
+   "status": 400,
+   "message": "Unsupported get request. Object with ID '17841459304101379' does not exist, cannot be loaded due to missing permissions, or does not support this operation",
+   "code": 100,
+   "subcode": 33
+  },
+  {
+   "label": "17841459304101379/content_publishing_limit",
+   "ok": false,
+   "status": 400,
+   "message": "Unsupported get request. Object with ID '17841459304101379' does not exist, cannot be loaded due to missing permissions, or does not support this operation",
+   "code": 100,
+   "subcode": 33
+  },
+  {
+   "label": "17841439304101379 (me 가 알려준 id)",
+   "ok": true,
+   "data": {
+    "username": "vinoetvin",
+    "id": "27898936983113150"
+   }
+  },
+  {
+   "label": "17841439304101379/content_publishing_limit",
+   "ok": true,
+   "data": {
+    "data": [
+     {
+      "quota_usage": 0
+     }
+    ]
+   }
+  }
+ ],
+ "resolved_user_id": "17841439304101379"
+}
