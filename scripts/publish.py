@@ -268,6 +268,7 @@ def write_status(note=''):
 def main():
     if not TOKEN:
         print('IG_ACCESS_TOKEN 비밀값이 없습니다. 저장소 Settings → Secrets 에 넣어 주세요.')
+        write_status('토큰 비밀값 없음')
         return 1
     qroot = os.path.join(ROOT, 'queue')
     allids = sorted(d for d in os.listdir(qroot)
@@ -317,6 +318,7 @@ def main():
         resolve_igid()
     except RuntimeError as e:
         print(f'계정 확인 실패 — {e}')
+        write_status(f'계정 확인 실패: {e}')
         return 1
 
     print(f'{len(ids)}건 발행 시작')
