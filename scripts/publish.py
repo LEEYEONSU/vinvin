@@ -24,6 +24,45 @@ V = CFG.get('api_version', 'v25.0')
 IGID = str(CFG.get('ig_user_id') or '')   # resolve_igid() 가 실제 값으로 바꾼다
 LIMIT = max(1, int(os.environ.get('PUBLISH_LIMIT') or 1))
 LOW_QUEUE = 3                              # 남은 대기분이 이보다 적으면 알린다
+WINDOW = (os.environ.get('PUBLISH_WINDOW') or '18-23').strip()   # 한국 시각, 이 사이에만 올린다
+MANUAL = os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch'
+
+
+def kst_hour():
+    return int(time.strftime('%H', time.gmtime(time.time() + 9 * 3600)))
+
+
+def in_window():
+    """깃허브 예약 실행은 몇 시간씩 늦는다. 그래서 하루에 여러 번 돌리고,
+    실제 발행은 한국 시각 저녁에만 한다."""
+    if not WINDOW:
+        return True
+    try:
+        a, b = (int(x) for x in WINDOW.split('-'))
+    except Exception:
+        return True
+    return a <= kst_hour() < b
+
+
+def published_today():
+    """오늘(KST) 이미 올린 것이 있으면 그 id. 여러 번 도는 동안 중복 발행을 막는다."""
+    import calendar
+    proot = os.path.join(ROOT, 'posted')
+    if not os.path.isdir(proot):
+        return None
+    today = today_kst()
+    for d in sorted(os.listdir(proot)):
+        f = os.path.join(proot, d, 'result.json')
+        if not os.path.exists(f):
+            continue
+        try:
+            ts = json.load(open(f, encoding='utf-8')).get('published_at') or ''
+            t = calendar.timegm(time.strptime(ts, '%Y-%m-%dT%H:%M:%SZ'))
+        except Exception:
+            continue
+        if time.strftime('%Y-%m-%d', time.gmtime(t + 9 * 3600)) == today:
+            return d
+    return None
 
 
 def today_kst():
@@ -250,7 +289,22 @@ def main():
         write_status('오늘 차례인 것이 없음')
         return 0
 
+    overdue = any((on or today) < today for _, on in ids)
     ids = [d for d, _ in ids][:LIMIT]
+
+    if not MANUAL:
+        done = published_today()
+        if done:
+            print(f'오늘은 이미 [{done}] 를 올렸습니다 — 건너뜁니다.')
+            write_status(f'오늘 발행 완료: {done}')
+            return 0
+        if not in_window() and not overdue:
+            print(f'지금 한국 시각 {kst_hour()}시 — 발행 시간대({WINDOW}시)가 아닙니다. 다음 실행에 올립니다.')
+            write_status(f'시간대 대기 (현재 {kst_hour()}시 · 창 {WINDOW}시)')
+            return 0
+        if overdue and not in_window():
+            print('날짜가 지난 건이 있어 시간대를 무시하고 올립니다.')
+
     if len(allids) - len(ids) < LOW_QUEUE:
         print(f'::warning::이번 건을 빼면 대기분이 {len(allids)-len(ids)}건뿐입니다 — 다음 편을 채워 주세요.')
 
