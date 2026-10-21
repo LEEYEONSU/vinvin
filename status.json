@@ -1,14 +1,8 @@
 {
- "checked_at": "2026-10-21T08:53:24Z",
+ "checked_at": "2026-10-21T10:34:40Z",
  "today_kst": "2026-10-21",
- "pending_count": 11,
+ "pending_count": 10,
  "pending": [
-  {
-   "id": "2026-10-20-d01",
-   "title": "단보 제1보 「코르크가 부서졌을 때」",
-   "publish_on": "2026-10-20",
-   "cards": 4
-  },
   {
    "id": "2026-10-21-t01",
    "title": "용어판 제1회 「Tannin(탄닌)」",
@@ -70,13 +64,13 @@
    "cards": 8
   }
  ],
- "posted_count": 1,
+ "posted_count": 2,
  "last_posted": {
-  "media_id": "18072971306730296",
-  "permalink": "https://www.instagram.com/p/Deqzf28FeZS/",
-  "cards": 8,
-  "published_at": "2026-10-19T08:14:48Z",
-  "id": "2026-10-19-h26"
+  "media_id": "17914569681540000",
+  "permalink": "https://www.instagram.com/p/DewNGc7FWHi/",
+  "cards": 4,
+  "published_at": "2026-10-21T10:34:40Z",
+  "id": "2026-10-20-d01"
  },
- "note": "계정 확인 실패: HTTP 400: API access blocked. (code 200, subcode None)"
+ "note": "성공 1 / 실패 0"
 }
