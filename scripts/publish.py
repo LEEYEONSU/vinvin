@@ -45,13 +45,18 @@ def in_window():
 
 
 def published_today():
-    """오늘(KST) 이미 올린 것이 있으면 그 id. 여러 번 도는 동안 중복 발행을 막는다."""
+    """오늘 몫을 이미 올렸으면 그 id. 여러 번 도는 동안 같은 건을 두 번 올리지 않기 위한 것이다.
+
+    밀린 건(폴더 이름의 날짜가 어제 이하)을 오늘 올린 경우는 세지 않는다 —
+    그래야 밀린 것을 낮에 올리고 그날 몫을 저녁에 또 올릴 수 있다."""
     import calendar
     proot = os.path.join(ROOT, 'posted')
     if not os.path.isdir(proot):
         return None
     today = today_kst()
     for d in sorted(os.listdir(proot)):
+        if not d.startswith(today):          # 오늘 몫이 아니면 넘어간다
+            continue
         f = os.path.join(proot, d, 'result.json')
         if not os.path.exists(f):
             continue

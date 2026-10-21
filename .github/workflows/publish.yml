@@ -7,6 +7,11 @@ name: 인스타 발행
 # 이미 그날 올렸으면 나머지 실행은 그냥 지나간다.
 # 날짜가 지난 건이 남아 있으면 시간대를 무시하고 올린다.
 on:
+  # publish.now 를 건드려 push 하면 그 자리에서 한 번 돈다.
+  # (저장소 토큰에 Actions 권한이 없어 Run workflow 버튼을 못 쓰는 대신)
+  push:
+    paths:
+      - 'publish.now'
   schedule:
     - cron: '47 3 * * *'
     - cron: '47 5 * * *'
@@ -42,7 +47,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           PUBLISH_LIMIT: ${{ github.event.inputs.limit || '1' }}
           PUBLISH_WINDOW: '18-23'
-          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          GITHUB_EVENT_NAME: ${{ github.event_name == 'push' && 'workflow_dispatch' || github.event_name }}
         run: python scripts/publish.py
 
       - name: 결과 기록
