@@ -69,6 +69,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           PUBLISH_LIMIT: ${{ github.event.inputs.limit || '1' }}
           PUBLISH_WINDOW: '18-23'
+          MIN_GAP_HOURS: '4'
           GITHUB_EVENT_NAME: ${{ github.event_name == 'push' && 'workflow_dispatch' || github.event_name }}
         run: python scripts/publish.py
 

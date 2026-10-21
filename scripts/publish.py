@@ -25,6 +25,7 @@ IGID = str(CFG.get('ig_user_id') or '')   # resolve_igid() 가 실제 값으로 
 LIMIT = max(1, int(os.environ.get('PUBLISH_LIMIT') or 1))
 LOW_QUEUE = 3                              # 남은 대기분이 이보다 적으면 알린다
 WINDOW = (os.environ.get('PUBLISH_WINDOW') or '18-23').strip()   # 한국 시각, 이 사이에만 올린다
+MIN_GAP_H = float(os.environ.get('MIN_GAP_HOURS') or 4)          # 직전 발행과 이만큼은 띄운다
 MANUAL = os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch'
 
 
@@ -42,6 +43,27 @@ def in_window():
     except Exception:
         return True
     return a <= kst_hour() < b
+
+
+def last_published_at():
+    """마지막으로 올린 시각(UTC epoch). 없으면 None."""
+    import calendar
+    proot = os.path.join(ROOT, 'posted')
+    if not os.path.isdir(proot):
+        return None
+    best = None
+    for d in sorted(os.listdir(proot)):
+        f = os.path.join(proot, d, 'result.json')
+        if not os.path.exists(f):
+            continue
+        try:
+            ts = json.load(open(f, encoding='utf-8')).get('published_at') or ''
+            t = calendar.timegm(time.strptime(ts, '%Y-%m-%dT%H:%M:%SZ'))
+        except Exception:
+            continue
+        if best is None or t > best:
+            best = t
+    return best
 
 
 def published_today():
@@ -304,6 +326,14 @@ def main():
             print(f'오늘은 이미 [{done}] 를 올렸습니다 — 건너뜁니다.')
             write_status(f'오늘 발행 완료: {done}')
             return 0
+        last = last_published_at()
+        if last is not None:
+            gap = (time.time() - last) / 3600.0
+            if gap < MIN_GAP_H:
+                print(f'직전 발행에서 {gap:.1f}시간밖에 안 지났습니다 '
+                      f'(최소 {MIN_GAP_H:g}시간) — 다음 실행에 올립니다.')
+                write_status(f'간격 대기 ({gap:.1f}/{MIN_GAP_H:g}시간)')
+                return 0
         if not in_window() and not overdue:
             print(f'지금 한국 시각 {kst_hour()}시 — 발행 시간대({WINDOW}시)가 아닙니다. 다음 실행에 올립니다.')
             write_status(f'시간대 대기 (현재 {kst_hour()}시 · 창 {WINDOW}시)')
