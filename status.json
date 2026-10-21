@@ -1,14 +1,8 @@
 {
- "checked_at": "2026-10-21T10:34:40Z",
+ "checked_at": "2026-10-21T10:37:45Z",
  "today_kst": "2026-10-21",
- "pending_count": 10,
+ "pending_count": 9,
  "pending": [
-  {
-   "id": "2026-10-21-t01",
-   "title": "용어판 제1회 「Tannin(탄닌)」",
-   "publish_on": "2026-10-21",
-   "cards": 5
-  },
   {
    "id": "2026-10-22-g11",
    "title": "연재만화 제11화 「밭에서는 기자도 손이 있다」",
@@ -64,13 +58,13 @@
    "cards": 8
   }
  ],
- "posted_count": 2,
+ "posted_count": 3,
  "last_posted": {
-  "media_id": "17914569681540000",
-  "permalink": "https://www.instagram.com/p/DewNGc7FWHi/",
-  "cards": 4,
-  "published_at": "2026-10-21T10:34:40Z",
-  "id": "2026-10-20-d01"
+  "media_id": "18119019808998336",
+  "permalink": "https://www.instagram.com/p/DewNdGuER2g/",
+  "cards": 5,
+  "published_at": "2026-10-21T10:37:45Z",
+  "id": "2026-10-21-t01"
  },
  "note": "성공 1 / 실패 0"
 }

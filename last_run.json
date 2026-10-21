@@ -1,7 +1,7 @@
 {
- "started_at": "2026-10-21T10:34:12Z",
- "started_at_kst": "2026-10-21 19:34",
- "event": "push",
- "sha": "4a31a48f",
- "run": "10"
+ "started_at": "2026-10-21T10:37:15Z",
+ "started_at_kst": "2026-10-21 19:37",
+ "event": "schedule",
+ "sha": "f27248a5",
+ "run": "11"
 }
