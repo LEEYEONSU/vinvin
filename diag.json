@@ -1,0 +1,57 @@
+{
+ "checked_at": "2026-10-21T02:49:36Z",
+ "api_version": "v25.0",
+ "token_present": true,
+ "token_len": 184,
+ "token_tail": "WQZDZD",
+ "probes": [
+  {
+   "label": "me (버전 있음)",
+   "ok": false,
+   "status": 400,
+   "raw": "{\"error\":{\"message\":\"API access blocked.\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"Amp2ggPZsZMED1tJ8PMNcK7\"}}",
+   "error": {
+    "message": "API access blocked.",
+    "type": "OAuthException",
+    "code": 200,
+    "fbtrace_id": "Amp2ggPZsZMED1tJ8PMNcK7"
+   }
+  },
+  {
+   "label": "me (버전 없음)",
+   "ok": false,
+   "status": 400,
+   "raw": "{\"error\":{\"message\":\"API access blocked.\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"APbICI8XuGqYTcf6iFPNNVE\"}}",
+   "error": {
+    "message": "API access blocked.",
+    "type": "OAuthException",
+    "code": 200,
+    "fbtrace_id": "APbICI8XuGqYTcf6iFPNNVE"
+   }
+  },
+  {
+   "label": "me/content_publishing_limit",
+   "ok": false,
+   "status": 400,
+   "raw": "{\"error\":{\"message\":\"API access blocked.\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AURmeRBidKJxfr9rdX60Y0l\"}}",
+   "error": {
+    "message": "API access blocked.",
+    "type": "OAuthException",
+    "code": 200,
+    "fbtrace_id": "AURmeRBidKJxfr9rdX60Y0l"
+   }
+  },
+  {
+   "label": "refresh_access_token (갱신 가능한지만)",
+   "ok": false,
+   "status": 400,
+   "raw": "{\"error\":{\"message\":\"API access blocked.\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"ABGYAUftplc0RThIzMrtjpF\"}}",
+   "error": {
+    "message": "API access blocked.",
+    "type": "OAuthException",
+    "code": 200,
+    "fbtrace_id": "ABGYAUftplc0RThIzMrtjpF"
+   }
+  }
+ ]
+}
