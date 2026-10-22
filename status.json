@@ -1,14 +1,8 @@
 {
- "checked_at": "2026-10-22T08:56:08Z",
+ "checked_at": "2026-10-22T10:41:35Z",
  "today_kst": "2026-10-22",
- "pending_count": 9,
+ "pending_count": 8,
  "pending": [
-  {
-   "id": "2026-10-22-g11",
-   "title": "연재만화 제11화 「밭에서는 기자도 손이 있다」",
-   "publish_on": "2026-10-22",
-   "cards": 10
-  },
   {
    "id": "2026-10-23-s05",
    "title": "상품란 제5회 「겨울 식탁 Sélection」",
@@ -58,13 +52,13 @@
    "cards": 8
   }
  ],
- "posted_count": 3,
+ "posted_count": 4,
  "last_posted": {
-  "media_id": "18119019808998336",
-  "permalink": "https://www.instagram.com/p/DewNdGuER2g/",
-  "cards": 5,
-  "published_at": "2026-10-21T10:37:45Z",
-  "id": "2026-10-21-t01"
+  "media_id": "18086964875702527",
+  "permalink": "https://www.instagram.com/p/DeyyrR7m99R/",
+  "cards": 10,
+  "published_at": "2026-10-22T10:41:35Z",
+  "id": "2026-10-22-g11"
  },
- "note": "시간대 대기 (현재 17시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
