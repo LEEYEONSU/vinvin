@@ -1,14 +1,8 @@
 {
- "checked_at": "2026-10-24T08:25:00Z",
+ "checked_at": "2026-10-24T09:49:18Z",
  "today_kst": "2026-10-24",
- "pending_count": 7,
+ "pending_count": 6,
  "pending": [
-  {
-   "id": "2026-10-24-r02",
-   "title": "독자란 「독자 자격 고사 제2회」",
-   "publish_on": "2026-10-24",
-   "cards": 6
-  },
   {
    "id": "2026-10-25-w01",
    "title": "주보 제1호 「이번 주에 실린 것들」",
@@ -46,13 +40,13 @@
    "cards": 8
   }
  ],
- "posted_count": 5,
+ "posted_count": 6,
  "last_posted": {
-  "media_id": "18000383883001332",
-  "permalink": "https://www.instagram.com/p/De1WhLjkZO2/",
-  "cards": 8,
-  "published_at": "2026-10-23T10:33:17Z",
-  "id": "2026-10-23-s05"
+  "media_id": "18145096339582131",
+  "permalink": "https://www.instagram.com/p/De32SXOFi93/",
+  "cards": 6,
+  "published_at": "2026-10-24T09:49:18Z",
+  "id": "2026-10-24-r02"
  },
- "note": "시간대 대기 (현재 17시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
