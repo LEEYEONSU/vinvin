@@ -1,14 +1,8 @@
 {
- "checked_at": "2026-10-25T08:44:09Z",
+ "checked_at": "2026-10-25T10:11:17Z",
  "today_kst": "2026-10-25",
- "pending_count": 6,
+ "pending_count": 5,
  "pending": [
-  {
-   "id": "2026-10-25-w01",
-   "title": "주보 제1호 「이번 주에 실린 것들」",
-   "publish_on": "2026-10-25",
-   "cards": 5
-  },
   {
    "id": "2026-10-26-h29",
    "title": "본지 제29호 「코르크의 내력」",
@@ -40,13 +34,13 @@
    "cards": 8
   }
  ],
- "posted_count": 6,
+ "posted_count": 7,
  "last_posted": {
-  "media_id": "18145096339582131",
-  "permalink": "https://www.instagram.com/p/De32SXOFi93/",
-  "cards": 6,
-  "published_at": "2026-10-24T09:49:18Z",
-  "id": "2026-10-24-r02"
+  "media_id": "18078996827414426",
+  "permalink": "https://www.instagram.com/p/De6dmVQFk5Q/",
+  "cards": 5,
+  "published_at": "2026-10-25T10:11:17Z",
+  "id": "2026-10-25-w01"
  },
- "note": "시간대 대기 (현재 17시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
