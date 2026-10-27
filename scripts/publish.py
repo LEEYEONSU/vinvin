@@ -26,7 +26,9 @@ LIMIT = max(1, int(os.environ.get('PUBLISH_LIMIT') or 1))
 LOW_QUEUE = 3                              # 남은 대기분이 이보다 적으면 알린다
 WINDOW = (os.environ.get('PUBLISH_WINDOW') or '18-23').strip()   # 한국 시각, 이 사이에만 올린다
 MIN_GAP_H = float(os.environ.get('MIN_GAP_HOURS') or 4)          # 직전 발행과 이만큼은 띄운다
-MANUAL = os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch'
+# GITHUB_EVENT_NAME 은 러너가 덮어써서 workflow 의 env 로 바꿀 수 없다 — 별도 변수로 받는다
+MANUAL = (os.environ.get('PUBLISH_MANUAL') or '').lower() in ('1', 'true', 'yes') \
+         or os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch'
 
 
 def kst_hour():

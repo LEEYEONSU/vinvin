@@ -70,7 +70,7 @@ jobs:
           PUBLISH_LIMIT: ${{ github.event.inputs.limit || '1' }}
           PUBLISH_WINDOW: '18-23'
           MIN_GAP_HOURS: '4'
-          GITHUB_EVENT_NAME: ${{ github.event_name == 'push' && 'workflow_dispatch' || github.event_name }}
+          PUBLISH_MANUAL: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && 'true' || 'false' }}
         run: python scripts/publish.py
 
       - name: 결과 기록
