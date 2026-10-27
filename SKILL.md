@@ -59,7 +59,7 @@ posted/           result.json 에 게시물 주소 · status.json 에 매 실행
 
 ```
 kit/vino.py  kit/art.py  kit/comic.py  kit/gallo.py
-kit/render_any.py  kit/measure.py  kit/mk_reel.py  kit/bootstrap_fonts.sh
+kit/render_any.py  kit/measure.py  kit/mk_reel2.py  kit/mk_music.py  kit/bootstrap_fonts.sh
 ```
 
 받은 파일을 작업 폴더로 옮긴다(`kit/` 접두사 없이 평평하게). `art`·`comic`은 `vino`를, `comic`은 `gallo`도 import 한다. 실행은 `python3 스크립트.py` 로 한다 — `python3 -I` 는 같은 폴더의 모듈을 못 찾는다.
@@ -140,18 +140,19 @@ grep -oE '[가-힣]+\(<span class="lat"' *.html | wc -l  # 0 (표기 뒤집힘)
 
 ---
 
-## 9. 릴스 — 이미 나간 편을 영상으로
+## 9. 릴스 — 표지 한 장의 이야기를 움직이는 영상으로
 
-릴스는 새로 쓰지 않고 **직전 캐러셀 중 하나를 변환**한다. 4~6장짜리(단보·용어판·주보)가 15~20초로 가장 잘 맞는다. 만화도 좋다.
+릴스는 **카드를 이어 붙이는 슬라이드쇼가 아니다.** 이미 나간 편의 **표지(1면)가 말하는 것** — 헤드라인과 그 밑 한 줄, 표지 삽화 — 을 15~20초짜리 움직이는 장면으로 다시 만든다. 글은 한 번에 한 줄씩 떠오르고, 삽화는 자라고·벗겨지고·나타난다. 숫자는 세어 올라간다. 참고본: 2026-10-27 「코르크의 내력」 릴스(`kit/mk_reel2.py`) — 나무가 자라고, 25살에 첫 껍질이 벗겨지고, 9년마다, 셋째 껍질에서 마개가 나온다.
 
-```bash
-# posted/<id>/ 또는 카드 PNG 폴더 → 1080×1920 · 30fps · H.264/AAC · faststart
-python3 mk_reel.py <카드폴더> reel.mp4 --ac '<그 편 표지색>' --title '<편 제목>' --note '<아래 작은 글씨>'
-```
-
-만들어지는 것: `reel.mp4` 와 `reel_cover.jpg`. 장마다 느린 확대, 사이 0.4초 교차, 마지막에 계정 안내 장. ffmpeg 로 샘플 프레임을 뽑아 Read 로 확인한다.
-`post.json` 은 `{"type":"reel","title","caption","video":"reel.mp4","cover":"cover.jpg","publish_on","source":"<원본 id>"}`. 캡션은 원본을 요약하고 「전편은 피드에」를 넣는다. 표지색은 원본과 같게 해 격자에서 한 쌍으로 읽히게.
-Meta 요건: MP4(H.264/AAC) · 9:16 · 3초~15분 · 300MB 이하 · 23~60fps. `raw` 가 mp4 를 `application/octet-stream` 으로 주어도 받는다(2026-10-27 확인).
+만드는 법 (`kit/mk_reel2.py` 를 복사해 그 편에 맞게 고친다):
+- 540×960 HTML 한 장에 요소를 절대 배치하고, JS `setT(t)` 가 t(초)에 따라 opacity·transform 을 정한다. Playwright 로 30fps 프레임을 찍고 ffmpeg 로 묶는다. 그레인은 매 프레임 필터로 넣지 말고 ffmpeg 에서 PNG 한 장을 `blend=screen` 으로 얹는다(렌더 7분 → 1분). 뷰포트는 정확히 540×960, `page.screenshot(clip=…)` 으로 찍어야 1080×1920 이 나온다. blend 전에 양쪽을 `format=gbrp` 로 맞춘다(안 맞추면 색이 뒤집힌다).
+- 장면 순서: 제호 → 소제목·제목 → 삽화가 생기며 사실 1 → 사실 2(숫자) → 전환 → 결론 한 문장 → 「전편은 피드에 · @vinoetvin」. 글은 1900년대 신문 문체 그대로, 이모지 없음.
+- 표지색을 바탕으로, 글자는 종이색, 강조는 금색. 어두운 바탕이라 `bg=` 원칙이 그대로 적용된다.
+- **배경음악은 `kit/mk_music.py` 로 그 자리에서 짓는다** — 뮤직박스 풍 왈츠, 단조, 레코드 잡음. 저작권 문제가 없는 자작곡이다. 편 분위기에 따라 `--mood warm`(느림) 또는 `--mood brisk`(빠름). 밖에서 음원을 받아 쓰지 않는다(권리 확인이 안 된다). 인스타 음악 라이브러리는 API 발행에서는 붙일 수 없다.
+- 결과: `reel.mp4`(H.264/AAC · 30fps · faststart) + 표지 JPEG(완성 장면 프레임). ffmpeg 로 프레임 몇 장을 뽑아 Read 로 확인한다 — 글 겹침, 잘림, 색.
+- `post.json`: `{"type":"reel","title","caption","video":"reel.mp4","cover":"cover.jpg","publish_on","source":"<원본 id>","music":"자작곡 …"}`. 캡션은 그 편의 핵심을 다시 말하고 「전편은 피드에」와 「음악은 본지가 직접 지었습니다」를 넣는다. 표지색은 원본과 같게.
+- Meta 요건: MP4(H.264/AAC) · 9:16 · 3초~15분 · 300MB 이하 · 23~60fps. `raw` 가 mp4 를 `application/octet-stream` 으로 주어도 받는다(확인됨). 처리 대기 1~3분.
+- 카드 슬라이드쇼(`kit/mk_reel.py`)는 쓰지 않는다 — 2026-10-27 첫 릴스에 썼다가 「이런 게 아니다」는 지적을 받았다.
 
 ---
 
