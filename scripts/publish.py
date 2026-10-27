@@ -175,6 +175,7 @@ def check_caption(text):
 
 def wait_ready(cid, timeout=240):
     t0 = time.time()
+    every = 5 if timeout <= 300 else 15
     while time.time() - t0 < timeout:
         r = req(f'{GRAPH}/{V}/{cid}?' + urllib.parse.urlencode(
             {'fields': 'status_code,status', 'access_token': TOKEN}))
@@ -183,12 +184,54 @@ def wait_ready(cid, timeout=240):
             return
         if code == 'ERROR':
             raise RuntimeError(f'컨테이너 처리 실패: {r.get("status")}')
-        time.sleep(5)
+        time.sleep(every)
     raise RuntimeError(f'{timeout}초 안에 컨테이너가 준비되지 않음')
+
+
+def publish_reel(qid, qdir, post):
+    """릴스 한 건. 영상은 raw 주소로 Meta 가 가져간다. 처리에 몇 분 걸리므로 오래 기다린다."""
+    caption = post.get('caption', '')
+    video = post.get('video') or 'reel.mp4'
+    cover = post.get('cover')
+    vp = os.path.join(qdir, video)
+    if not os.path.exists(vp):
+        raise RuntimeError(f'{video} 파일이 없습니다')
+    if not video.lower().endswith(('.mp4', '.mov')):
+        raise RuntimeError(f'{video} — 릴스는 MP4/MOV 만 받습니다')
+    mb = os.path.getsize(vp) / 1e6
+    if mb > 300:
+        raise RuntimeError(f'{video} 가 {mb:.0f}MB — 300MB 를 넘습니다')
+    bad = check_caption(caption)
+    if bad:
+        raise RuntimeError('캡션 문제: ' + ' / '.join(bad))
+
+    print(f'   · 릴스 컨테이너 생성 ({mb:.1f}MB)')
+    params = {'media_type': 'REELS', 'video_url': raw_url(f'queue/{qid}/{video}'),
+              'caption': caption, 'share_to_feed': 'true', 'access_token': TOKEN}
+    if cover and os.path.exists(os.path.join(qdir, cover)):
+        params['cover_url'] = raw_url(f'queue/{qid}/{cover}')
+    cid = retry(lambda: req(f'{GRAPH}/{V}/{IGID}/media', params), label='릴스 컨테이너')['id']
+    print('   · 영상 처리 대기')
+    wait_ready(cid, timeout=900)
+
+    print('   · 발행')
+    media_id = retry(lambda: req(f'{GRAPH}/{V}/{IGID}/media_publish',
+                                 {'creation_id': cid, 'access_token': TOKEN}),
+                     label='발행')['id']
+    link = None
+    try:
+        link = req(f'{GRAPH}/{V}/{media_id}?' + urllib.parse.urlencode(
+            {'fields': 'permalink', 'access_token': TOKEN})).get('permalink')
+    except RuntimeError:
+        pass
+    return {'media_id': media_id, 'permalink': link, 'type': 'reel', 'video': video,
+            'published_at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
 
 
 def publish_one(qid, qdir):
     post = json.load(open(os.path.join(qdir, 'post.json'), encoding='utf-8'))
+    if (post.get('type') or '').lower() == 'reel':
+        return publish_reel(qid, qdir, post)
     caption = post.get('caption', '')
     cards = post.get('cards') or sorted(f for f in os.listdir(qdir) if f.lower().endswith('.jpg'))
 
@@ -264,6 +307,7 @@ def write_status(note=''):
             post = {}
         pending.append({'id': d, 'title': post.get('title', ''),
                         'publish_on': due_on(qd),
+                        'type': (post.get('type') or 'carousel'),
                         'cards': len(post.get('cards') or [])})
     proot = os.path.join(ROOT, 'posted')
     posted = sorted(d for d in os.listdir(proot)
