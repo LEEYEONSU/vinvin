@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-10-27T11:21:17Z",
+ "checked_at": "2026-10-27T11:22:34Z",
  "today_kst": "2026-10-27",
- "pending_count": 5,
+ "pending_count": 4,
  "pending": [
-  {
-   "id": "2026-10-27-reel-d01",
-   "title": "릴스 · 단보 제1보 「코르크가 부서졌을 때」",
-   "publish_on": "2026-10-27",
-   "type": "reel",
-   "cards": 0
-  },
   {
    "id": "2026-11-14-hos",
    "title": "속보판 「촛불이 꺼지면 낙찰입니다」",
@@ -39,13 +32,14 @@
    "cards": 8
   }
  ],
- "posted_count": 8,
+ "posted_count": 9,
  "last_posted": {
-  "media_id": "18078133697717522",
-  "permalink": "https://www.instagram.com/p/De883v0Fi0B/",
-  "cards": 8,
-  "published_at": "2026-10-26T09:23:01Z",
-  "id": "2026-10-26-h29"
+  "media_id": "18080692139401959",
+  "permalink": "https://www.instagram.com/reel/De_vTNuEivb/",
+  "type": "reel",
+  "video": "reel.mp4",
+  "published_at": "2026-10-27T11:22:34Z",
+  "id": "2026-10-27-reel-d01"
  },
- "note": "릴스 대기 추가"
+ "note": "성공 1 / 실패 0"
 }
