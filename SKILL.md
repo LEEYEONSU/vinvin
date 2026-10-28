@@ -160,17 +160,16 @@ grep -oE '[가-힣]+\(<span class="lat"' *.html | wc -l  # 0 (표기 뒤집힘)
 
 **① 파일** — 캐러셀은 JPEG 로(`Image.open(png).convert('RGB').save(dst,'JPEG',quality=92,optimize=True,progressive=True,subsampling=0)`, 1080×1350 그대로), 릴스는 §9 의 mp4. 한 묶음 2~10장, 캡션 2200자, 해시태그 30개.
 
-**② 맥 작업본** — `device_bash` 로. 마운트 이름은 세션마다 다르니 `ls $HOME/mnt/` 로 찾고 그 아래에서 `vinvin` 폴더를 찾는다(`~/mnt/git/vinvin` 일 때도, `~/mnt/vinvin` 일 때도 있다).
+**② 맥 작업본에 넣고 올린다** — `device_bash` 로. 마운트 이름은 세션마다 다르니 `ls $HOME/mnt/` 로 찾고 그 아래에서 `vinvin` 폴더를 찾는다(`~/mnt/git/vinvin` 일 때도, `~/mnt/vinvin` 일 때도 있다). **그 폴더에서 `git pull`·`git commit` 을 직접 하지 않는다** — 연결 폴더에서는 파일을 못 지워 git 이 `.lock` 에서 멈추고, 삭제 권한 요청은 사람이 없으면 영영 대기한다(2026-10-28 실행이 그렇게 멈췄다).
 
 ```bash
-find .git -name '*.lock' -delete        # 연결 폴더에서는 git 이 자기 잠금파일을 못 지운다
-git pull --rebase origin main
-mkdir -p queue/<publish_on>-<약칭>         # 예: queue/2026-11-02-t02/  릴스는 queue/2026-11-02-reel-t01/
-#  … 파일과 post.json 을 그 안에
-./tools/pushq.sh                        # 「올렸습니다」가 나오면 성공
+cd <작업본>
+mkdir -p queue/<publish_on>-<약칭>        # 예: queue/2026-11-02-t02/  릴스는 queue/2026-11-02-reel-t01/
+#  … 파일과 post.json 을 그 안에 (device_commit_files 로 zip 을 넣고 unzip 해도 된다)
+./tools/pushq2.sh                         # VM 홈에 저장소를 새로 받아 거기서 커밋·push 한다. 「올렸습니다」가 나오면 성공
 ```
 
-삭제가 `Operation not permitted` 로 막히면 세션마다 `device_request_delete_permission` 으로 그 연결 폴더의 삭제 권한을 다시 받는다(지우는 건 `.lock` 뿐이다). 파일 전달은 zip 하나로 `device_commit_files`(스테이징 경로는 `/mnt/user-data/outputs/` 아래) 한 뒤 푸는 것이 빠르다.
+`pushq2.sh` 는 올린 묶음을 작업본의 `queue/_pushed/` 로 옮겨 둔다. `device_request_delete_permission` 은 부르지 않는다. 파일 전달은 zip 하나로 `device_commit_files`(스테이징 경로는 `/mnt/user-data/outputs/` 아래) 한 뒤 푸는 것이 빠르다.
 
 **③ 맥을 못 쓰면** — 제작물을 작업대 자산으로 올리고 `posts/<id>` 에 `status:"ready"` 로 기록한 뒤, 답변 첫 줄에 **"맥이 꺼져 있어 저장소에 올리지 못했습니다 — 맥을 켜고 말씀해 주시면 올려 드립니다"** 라고 적는다. 오류로 처리하지 않는다.
 
@@ -185,6 +184,6 @@ mkdir -p queue/<publish_on>-<약칭>         # 예: queue/2026-11-02-t02/  릴�
 - 폰트 6개가 안 깔리면 → 멈춘다.
 - `graph.instagram.com`·`api.github.com` 이 403 → **정상이다.** 정책 차단. 우회하지 않는다.
 - `status.json` 의 note 가 **`API access blocked (code 200)`** → Meta 가 앱 단위로 막은 것. 토큰·코드 문제가 아니다. 사람에게 Meta 개발자 대시보드 상단 알림을 확인해 달라고 한다. 큐는 그대로 남고 풀리면 밀린 순서로 나간다.
-- `pushq.sh` 가 인증으로 실패 → 토큰이 빠진 것. `cd ~/git/vinvin && ./tools/set-token.sh` 를 한 번 돌려 달라고 한다. 자격증명 경로는 상대경로여야 한다.
+- `pushq2.sh` 가 「push 토큰이 없습니다」 또는 인증 실패 → 토큰이 빠진 것. `cd ~/git/vinvin && ./tools/set-token.sh` 를 한 번 돌려 달라고 한다. 자격증명 경로는 상대경로여야 한다.
 - 사실 확인이 안 되는 글감 → `status:"dropped"` 로 내리고 다음 것으로.
 - 어느 단계든 실패하면 `config/run`에 `{status:"error", error:"무엇이 왜 안 됐는지 한 줄", updatedAt}` 를 남긴다.
