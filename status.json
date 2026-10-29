@@ -1,21 +1,21 @@
 {
- "checked_at": "2026-10-28T22:32:30Z",
+ "checked_at": "2026-10-29T10:26:43Z",
  "today_kst": "2026-10-29",
  "pending_count": 6,
  "pending": [
   {
-   "id": "2026-10-29-g13",
-   "title": "연재만화 제13화 「코르크 마개와의 싸움」",
-   "publish_on": "2026-10-29",
+   "id": "2026-10-30-s06",
+   "title": "상품란 제6회 「선물용 Sélection」",
+   "publish_on": "2026-10-30",
    "type": "carousel",
-   "cards": 10
+   "cards": 8
   },
   {
-   "id": "2026-10-29-gx1",
-   "title": "연재만화 번외 「코르크 마개와의 싸움」",
-   "publish_on": "2026-10-29",
+   "id": "2026-10-31-r03",
+   "title": "독자란 「독자 자격 고사 제3회」",
+   "publish_on": "2026-10-31",
    "type": "carousel",
-   "cards": 10
+   "cards": 6
   },
   {
    "id": "2026-11-14-hos",
@@ -46,14 +46,13 @@
    "cards": 8
   }
  ],
- "posted_count": 10,
+ "posted_count": 11,
  "last_posted": {
-  "media_id": "17962155771237899",
-  "permalink": "https://www.instagram.com/reel/De_ztAZgUGl/",
-  "type": "reel",
-  "video": "reel.mp4",
-  "published_at": "2026-10-27T12:01:04Z",
-  "id": "2026-10-27-reel-h29"
+  "media_id": "18647956678009706",
+  "permalink": "https://www.instagram.com/p/DfEyijxm2uv/",
+  "cards": 10,
+  "published_at": "2026-10-29T10:26:43Z",
+  "id": "2026-10-29-gx1"
  },
- "note": "10/29 만화 제13화 추가"
+ "note": "성공 1 / 실패 0"
 }
