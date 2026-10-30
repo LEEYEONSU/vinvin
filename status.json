@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-10-29T17:35:17Z",
+ "checked_at": "2026-10-30T10:29:30Z",
  "today_kst": "2026-10-30",
- "pending_count": 6,
+ "pending_count": 5,
  "pending": [
-  {
-   "id": "2026-10-30-s06",
-   "title": "상품란 제6회 「선물용 Sélection」",
-   "publish_on": "2026-10-30",
-   "type": "carousel",
-   "cards": 8
-  },
   {
    "id": "2026-10-31-r03",
    "title": "독자란 「독자 자격 고사 제3회」",
@@ -46,13 +39,13 @@
    "cards": 8
   }
  ],
- "posted_count": 11,
+ "posted_count": 12,
  "last_posted": {
-  "media_id": "18647956678009706",
-  "permalink": "https://www.instagram.com/p/DfEyijxm2uv/",
-  "cards": 10,
-  "published_at": "2026-10-29T10:26:43Z",
-  "id": "2026-10-29-gx1"
+  "media_id": "18014801246758952",
+  "permalink": "https://www.instagram.com/p/DfHXp9mFmEG/",
+  "cards": 8,
+  "published_at": "2026-10-30T10:29:30Z",
+  "id": "2026-10-30-s06"
  },
- "note": "시간대 대기 (현재 2시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
