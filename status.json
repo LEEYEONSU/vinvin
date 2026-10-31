@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-10-30T17:15:22Z",
+ "checked_at": "2026-10-31T09:58:50Z",
  "today_kst": "2026-10-31",
- "pending_count": 5,
+ "pending_count": 4,
  "pending": [
-  {
-   "id": "2026-10-31-r03",
-   "title": "독자란 「독자 자격 고사 제3회」",
-   "publish_on": "2026-10-31",
-   "type": "carousel",
-   "cards": 6
-  },
   {
    "id": "2026-11-14-hos",
    "title": "속보판 「촛불이 꺼지면 낙찰입니다」",
@@ -39,13 +32,13 @@
    "cards": 8
   }
  ],
- "posted_count": 12,
+ "posted_count": 13,
  "last_posted": {
-  "media_id": "18014801246758952",
-  "permalink": "https://www.instagram.com/p/DfHXp9mFmEG/",
-  "cards": 8,
-  "published_at": "2026-10-30T10:29:30Z",
-  "id": "2026-10-30-s06"
+  "media_id": "18636950155063200",
+  "permalink": "https://www.instagram.com/p/DfJ48N7FQTO/",
+  "cards": 6,
+  "published_at": "2026-10-31T09:58:50Z",
+  "id": "2026-10-31-r03"
  },
- "note": "시간대 대기 (현재 2시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
