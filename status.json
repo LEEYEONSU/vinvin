@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-02T11:41:57Z",
+ "checked_at": "2026-11-02T13:53:21Z",
  "today_kst": "2026-11-02",
- "pending_count": 8,
+ "pending_count": 7,
  "pending": [
-  {
-   "id": "2026-11-02-reel-t01",
-   "title": "릴스 · 용어판 제1회 「Tannin(탄닌)」",
-   "publish_on": "2026-11-02",
-   "type": "reel",
-   "cards": 0
-  },
   {
    "id": "2026-11-03-d02",
    "title": "단보 제2보 「디캔팅은 언제 하나」",
@@ -60,13 +53,14 @@
    "cards": 8
   }
  ],
- "posted_count": 13,
+ "posted_count": 14,
  "last_posted": {
-  "media_id": "18636950155063200",
-  "permalink": "https://www.instagram.com/p/DfJ48N7FQTO/",
-  "cards": 6,
-  "published_at": "2026-10-31T09:58:50Z",
-  "id": "2026-10-31-r03"
+  "media_id": "18127379929961014",
+  "permalink": "https://www.instagram.com/reel/DfPdUllAUvp/",
+  "type": "reel",
+  "video": "reel.mp4",
+  "published_at": "2026-11-02T13:53:21Z",
+  "id": "2026-11-02-reel-t01"
  },
- "note": "계정 확인 실패: HTTP 500: "
+ "note": "성공 1 / 실패 0"
 }
