@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-04T18:53:22Z",
+ "checked_at": "2026-11-05T11:32:33Z",
  "today_kst": "2026-11-05",
  "pending_count": 7,
  "pending": [
-  {
-   "id": "2026-11-05-g14",
-   "title": "연재만화 제14화 「첫 와인바」",
-   "publish_on": "2026-11-05",
-   "type": "carousel",
-   "cards": 10
-  },
   {
    "id": "2026-11-06-s07",
    "title": "상품란 제7회 「혼자 마시는 밤 Sélection」",
@@ -23,6 +16,13 @@
    "publish_on": "2026-11-07",
    "type": "carousel",
    "cards": 6
+  },
+  {
+   "id": "2026-11-08-w02",
+   "title": "주보 제2호 「엿새에 여섯 편」",
+   "publish_on": "2026-11-08",
+   "type": "carousel",
+   "cards": 8
   },
   {
    "id": "2026-11-14-hos",
@@ -53,13 +53,13 @@
    "cards": 8
   }
  ],
- "posted_count": 16,
+ "posted_count": 17,
  "last_posted": {
-  "media_id": "18103470569373271",
-  "permalink": "https://www.instagram.com/p/DfUXUY5FtYw/",
-  "cards": 5,
-  "published_at": "2026-11-04T11:36:43Z",
-  "id": "2026-11-04-t02"
+  "media_id": "18154597486550789",
+  "permalink": "https://www.instagram.com/p/DfW7n8IFc_I/",
+  "cards": 10,
+  "published_at": "2026-11-05T11:32:33Z",
+  "id": "2026-11-05-g14"
  },
- "note": "시간대 대기 (현재 3시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
