@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-05T19:03:40Z",
+ "checked_at": "2026-11-06T11:31:58Z",
  "today_kst": "2026-11-06",
  "pending_count": 7,
  "pending": [
-  {
-   "id": "2026-11-06-s07",
-   "title": "상품란 제7회 「혼자 마시는 밤 Sélection」",
-   "publish_on": "2026-11-06",
-   "type": "carousel",
-   "cards": 8
-  },
   {
    "id": "2026-11-07-r04",
    "title": "독자란 제4회 「이 라벨을 읽어 보시오」",
@@ -23,6 +16,13 @@
    "publish_on": "2026-11-08",
    "type": "carousel",
    "cards": 8
+  },
+  {
+   "id": "2026-11-09-reel-d02",
+   "title": "릴스 · 단보 제2보 「디캔팅은 언제 하나」",
+   "publish_on": "2026-11-09",
+   "type": "reel",
+   "cards": 0
   },
   {
    "id": "2026-11-14-hos",
@@ -53,13 +53,13 @@
    "cards": 8
   }
  ],
- "posted_count": 17,
+ "posted_count": 18,
  "last_posted": {
-  "media_id": "18154597486550789",
-  "permalink": "https://www.instagram.com/p/DfW7n8IFc_I/",
-  "cards": 10,
-  "published_at": "2026-11-05T11:32:33Z",
-  "id": "2026-11-05-g14"
+  "media_id": "17924832042450802",
+  "permalink": "https://www.instagram.com/p/DfZgXlCFUeu/",
+  "cards": 8,
+  "published_at": "2026-11-06T11:31:58Z",
+  "id": "2026-11-06-s07"
  },
- "note": "시간대 대기 (현재 4시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
