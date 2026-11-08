@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-07T16:59:59Z",
+ "checked_at": "2026-11-08T10:47:21Z",
  "today_kst": "2026-11-08",
  "pending_count": 7,
  "pending": [
-  {
-   "id": "2026-11-08-w02",
-   "title": "주보 제2호 「엿새에 여섯 편」",
-   "publish_on": "2026-11-08",
-   "type": "carousel",
-   "cards": 8
-  },
   {
    "id": "2026-11-09-reel-d02",
    "title": "릴스 · 단보 제2보 「디캔팅은 언제 하나」",
@@ -21,6 +14,13 @@
    "id": "2026-11-10-d03",
    "title": "단보 제3보 「잔에 흐르는 눈물」",
    "publish_on": "2026-11-10",
+   "type": "carousel",
+   "cards": 0
+  },
+  {
+   "id": "2026-11-11-t03",
+   "title": "용어판 제3회 「Brut · Sec · Doux」",
+   "publish_on": "2026-11-11",
    "type": "carousel",
    "cards": 0
   },
@@ -53,13 +53,13 @@
    "cards": 8
   }
  ],
- "posted_count": 19,
+ "posted_count": 20,
  "last_posted": {
-  "media_id": "17960728242017724",
-  "permalink": "https://www.instagram.com/p/Dfb_jFhlsOh/",
-  "cards": 6,
-  "published_at": "2026-11-07T10:42:48Z",
-  "id": "2026-11-07-r04"
+  "media_id": "18043734428639439",
+  "permalink": "https://www.instagram.com/p/Dfek2hmm27_/",
+  "cards": 8,
+  "published_at": "2026-11-08T10:47:21Z",
+  "id": "2026-11-08-w02"
  },
- "note": "시간대 대기 (현재 1시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
