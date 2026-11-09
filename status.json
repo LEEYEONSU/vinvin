@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-08T17:15:23Z",
+ "checked_at": "2026-11-09T12:09:58Z",
  "today_kst": "2026-11-09",
  "pending_count": 7,
  "pending": [
-  {
-   "id": "2026-11-09-reel-d02",
-   "title": "릴스 · 단보 제2보 「디캔팅은 언제 하나」",
-   "publish_on": "2026-11-09",
-   "type": "reel",
-   "cards": 0
-  },
   {
    "id": "2026-11-10-d03",
    "title": "단보 제3보 「잔에 흐르는 눈물」",
@@ -23,6 +16,13 @@
    "publish_on": "2026-11-11",
    "type": "carousel",
    "cards": 0
+  },
+  {
+   "id": "2026-11-12-g15",
+   "title": "연재만화 제15화 「송년회 특집」",
+   "publish_on": "2026-11-12",
+   "type": "carousel",
+   "cards": 10
   },
   {
    "id": "2026-11-14-hos",
@@ -53,13 +53,14 @@
    "cards": 8
   }
  ],
- "posted_count": 20,
+ "posted_count": 21,
  "last_posted": {
-  "media_id": "18043734428639439",
-  "permalink": "https://www.instagram.com/p/Dfek2hmm27_/",
-  "cards": 8,
-  "published_at": "2026-11-08T10:47:21Z",
-  "id": "2026-11-08-w02"
+  "media_id": "18099220514115482",
+  "permalink": "https://www.instagram.com/reel/DfhTDoeFEQ4/",
+  "type": "reel",
+  "video": "reel.mp4",
+  "published_at": "2026-11-09T12:09:58Z",
+  "id": "2026-11-09-reel-d02"
  },
- "note": "시간대 대기 (현재 2시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
