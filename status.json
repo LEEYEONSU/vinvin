@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-09T21:38:55Z",
+ "checked_at": "2026-11-10T11:49:21Z",
  "today_kst": "2026-11-10",
  "pending_count": 7,
  "pending": [
-  {
-   "id": "2026-11-10-d03",
-   "title": "단보 제3보 「잔에 흐르는 눈물」",
-   "publish_on": "2026-11-10",
-   "type": "carousel",
-   "cards": 0
-  },
   {
    "id": "2026-11-11-t03",
    "title": "용어판 제3회 「Brut · Sec · Doux」",
@@ -23,6 +16,13 @@
    "publish_on": "2026-11-12",
    "type": "carousel",
    "cards": 10
+  },
+  {
+   "id": "2026-11-13-reel-d03",
+   "title": "릴스 · 단보 제3보 「잔에 흐르는 눈물」",
+   "publish_on": "2026-11-13",
+   "type": "reel",
+   "cards": 0
   },
   {
    "id": "2026-11-14-hos",
@@ -53,14 +53,13 @@
    "cards": 8
   }
  ],
- "posted_count": 21,
+ "posted_count": 22,
  "last_posted": {
-  "media_id": "18099220514115482",
-  "permalink": "https://www.instagram.com/reel/DfhTDoeFEQ4/",
-  "type": "reel",
-  "video": "reel.mp4",
-  "published_at": "2026-11-09T12:09:58Z",
-  "id": "2026-11-09-reel-d02"
+  "media_id": "17909392185668479",
+  "permalink": "https://www.instagram.com/p/Dfj1iTCmwhY/",
+  "cards": 4,
+  "published_at": "2026-11-10T11:49:21Z",
+  "id": "2026-11-10-d03"
  },
- "note": "시간대 대기 (현재 6시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
