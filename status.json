@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-10T18:53:16Z",
+ "checked_at": "2026-11-11T11:28:36Z",
  "today_kst": "2026-11-11",
- "pending_count": 7,
+ "pending_count": 6,
  "pending": [
-  {
-   "id": "2026-11-11-t03",
-   "title": "용어판 제3회 「Brut · Sec · Doux」",
-   "publish_on": "2026-11-11",
-   "type": "carousel",
-   "cards": 0
-  },
   {
    "id": "2026-11-12-g15",
    "title": "연재만화 제15화 「송년회 특집」",
@@ -53,13 +46,13 @@
    "cards": 8
   }
  ],
- "posted_count": 22,
+ "posted_count": 23,
  "last_posted": {
-  "media_id": "17909392185668479",
-  "permalink": "https://www.instagram.com/p/Dfj1iTCmwhY/",
-  "cards": 4,
-  "published_at": "2026-11-10T11:49:21Z",
-  "id": "2026-11-10-d03"
+  "media_id": "18118441742123749",
+  "permalink": "https://www.instagram.com/p/DfmX9XHFAUU/",
+  "cards": 5,
+  "published_at": "2026-11-11T11:28:36Z",
+  "id": "2026-11-11-t03"
  },
- "note": "시간대 대기 (현재 3시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
