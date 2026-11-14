@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-13T18:48:00Z",
+ "checked_at": "2026-11-14T10:58:24Z",
  "today_kst": "2026-11-14",
- "pending_count": 5,
+ "pending_count": 4,
  "pending": [
-  {
-   "id": "2026-11-14-hos",
-   "title": "속보판 「촛불이 꺼지면 낙찰입니다」",
-   "publish_on": "2026-11-14",
-   "type": "carousel",
-   "cards": 6
-  },
   {
    "id": "2026-11-15-w03",
    "title": "주보 제3호 「거품과 눈물」",
@@ -39,14 +32,13 @@
    "cards": 8
   }
  ],
- "posted_count": 25,
+ "posted_count": 26,
  "last_posted": {
-  "media_id": "18149331946566450",
-  "permalink": "https://www.instagram.com/reel/DfridhTkxJ2/",
-  "type": "reel",
-  "video": "reel.mp4",
-  "published_at": "2026-11-13T11:36:58Z",
-  "id": "2026-11-13-reel-d03"
+  "media_id": "17970698079197350",
+  "permalink": "https://www.instagram.com/p/DfuC4uGG8Nx/",
+  "cards": 6,
+  "published_at": "2026-11-14T10:58:24Z",
+  "id": "2026-11-14-hos"
  },
- "note": "시간대 대기 (현재 3시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
