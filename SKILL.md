@@ -25,7 +25,7 @@ posted/           result.json 에 게시물 주소 · status.json 에 매 실행
 ```
 
 - **`graph.instagram.com` 은 이 환경에서 네트워크 정책으로 막혀 있다.** 직접 호출하지 말고, 우회도 하지 마라. 발행은 Actions 가 한다.
-- **저장소로 push 도 클라우드에서는 막혀 있다.** push 는 맥에 연결된 작업본에서만 나간다. 맥을 못 쓰면 만든 것을 작업대에 쌓아 두고 그 사실을 알린다(§10③). 오류가 아니다.
+- **저장소로 push 는 Claude 쪽에서는 어디서도 안 된다** — 클라우드도, 맥에 연결된 셸도 2026-11 부터 정책으로 403 이다(「use a terminal on your own computer」). push 는 **맥 자체**가 한다: `tools/install-autopush.sh` 로 깔아 둔 launchd 가 20분마다 `~/git/vinvin/queue/` 의 새 묶음을 올린다. 너는 묶음을 맥의 `queue/` 에 넣어 두기만 하면 된다. 403 은 오류가 아니다.
 - 저장소 `LEEYEONSU/vinvin` 은 **공개**여야 한다 — Meta 가 `raw.githubusercontent.com` 에서 이미지·영상을 직접 가져간다.
 - 지금 대기분과 마지막 실행 결과: `https://raw.githubusercontent.com/LEEYEONSU/vinvin/main/status.json`
 - 깃허브 예약 실행은 **실측 1~6시간 늦는다.** 그래서 여러 번 돌리고 발행 시각은 파이썬 쪽에서 가둔다. 날짜가 지난 건(밀린 건)은 시간대를 무시하고 올라간다.
@@ -167,12 +167,14 @@ grep -oE '[가-힣]+\(<span class="lat"' *.html | wc -l  # 0 (표기 뒤집힘)
 cd <작업본>
 mkdir -p queue/<publish_on>-<약칭>        # 예: queue/2026-11-02-t02/  릴스는 queue/2026-11-02-reel-t01/
 #  … 파일과 post.json 을 그 안에 (device_commit_files 로 zip 을 넣고 unzip 해도 된다)
-./tools/pushq2.sh                         # VM 홈에 저장소를 새로 받아 거기서 커밋·push 한다. 「올렸습니다」가 나오면 성공
+./tools/pushq2.sh                         # 「올렸습니다」면 성공. Claude 셸에서는 403 이 정상 — 그러면 묶음을 queue/ 에 둔 채 다음으로 간다(맥의 launchd 가 20분 안에 올린다)
 ```
 
 `pushq2.sh` 는 올린 묶음을 작업본의 `queue/_pushed/` 로 옮겨 둔다. `device_request_delete_permission` 은 부르지 않는다. 파일 전달은 zip 하나로 `device_commit_files`(스테이징 경로는 `/mnt/user-data/outputs/` 아래) 한 뒤 푸는 것이 빠르다.
 
-**③ 맥을 못 쓰면** — 제작물을 작업대 자산으로 올리고 `posts/<id>` 에 `status:"ready"` 로 기록한 뒤, 답변 첫 줄에 **"맥이 꺼져 있어 저장소에 올리지 못했습니다 — 맥을 켜고 말씀해 주시면 올려 드립니다"** 라고 적는다. 오류로 처리하지 않는다.
+**③ push 가 403 이면** — 정상이다. 묶음은 맥 `queue/` 에 그대로 두고 `posts/<id>` 를 `status:"queued"` 로 기록한다(맥의 자동 올리기가 20분 안에 올린다). 답변에 「맥이 올립니다 — 20분 안에」라고만 적고 **둘째 편(버퍼)도 그대로 이어서 만든다.** 발행일 계산은 저장소 `status.json` 만 믿지 말고 **맥 `queue/` 에 있는 묶음까지 차 있는 날로 센다.**
+
+**③-2 맥을 못 쓰면** — 제작물을 작업대 자산으로 올리고 `posts/<id>` 에 `status:"ready"` 로 기록한 뒤, 답변 첫 줄에 **"맥이 꺼져 있어 저장소에 올리지 못했습니다 — 맥을 켜고 말씀해 주시면 올려 드립니다"** 라고 적는다. 오류로 처리하지 않는다. 이 경우 둘째 편은 만들지 않는다.
 
 **④ 작업대 기록** — `posts/<id>` set(`status:"queued"`, `publishOn`, `queueId`, `coverHex`, `coverName`, `sources`), 쓴 글감 `status:"done"`, `config/history` 에 제목 추가, `config/run` 을 done 으로. 카드 묶음은 `SendUserFile` 로도 보낸다. 마지막 답변은 네 줄 이내 — 무엇을, 몇 장(또는 몇 초), 언제 나가는지, 표지색.
 
