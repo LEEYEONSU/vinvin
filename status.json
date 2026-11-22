@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-22T15:42:24Z",
+ "checked_at": "2026-11-22T17:26:07Z",
  "today_kst": "2026-11-23",
- "pending_count": 6,
+ "pending_count": 5,
  "pending": [
-  {
-   "id": "2026-11-21-r05",
-   "title": "독자란 제5회 「올해 가장 기억에 남는 한 병」",
-   "publish_on": "2026-11-21",
-   "type": "carousel",
-   "cards": 6
-  },
   {
    "id": "2026-11-22-reel-h27",
    "title": "릴스 · 본지 제27호 「세상에서 가장 급한 와인」",
@@ -46,13 +39,13 @@
    "cards": 8
   }
  ],
- "posted_count": 30,
+ "posted_count": 31,
  "last_posted": {
-  "media_id": "18151646245563552",
-  "permalink": "https://www.instagram.com/p/DgCwWsikXBl/",
-  "cards": 8,
-  "published_at": "2026-11-22T12:00:32Z",
-  "id": "2026-11-20-s08"
+  "media_id": "18047223926643176",
+  "permalink": "https://www.instagram.com/p/DgDVoBYmmY7/",
+  "cards": 6,
+  "published_at": "2026-11-22T17:26:07Z",
+  "id": "2026-11-21-r05"
  },
- "note": "간격 대기 (3.7/4시간)"
+ "note": "성공 1 / 실패 0"
 }
