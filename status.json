@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-23T16:30:34Z",
+ "checked_at": "2026-11-23T19:30:49Z",
  "today_kst": "2026-11-24",
- "pending_count": 5,
+ "pending_count": 4,
  "pending": [
-  {
-   "id": "2026-11-23-h31",
-   "title": "본지 제31호 「포도밭을 삼킨 벌레」",
-   "publish_on": "2026-11-23",
-   "type": "carousel",
-   "cards": 0
-  },
   {
    "id": "2026-11-24-h30",
    "title": "본지 제30호 「왜 750밀리리터인가」",
@@ -39,14 +32,13 @@
    "cards": 8
   }
  ],
- "posted_count": 32,
+ "posted_count": 33,
  "last_posted": {
-  "media_id": "18159203302523538",
-  "permalink": "https://www.instagram.com/reel/DgFgwGRjTn6/",
-  "type": "reel",
-  "video": "reel.mp4",
-  "published_at": "2026-11-23T13:42:20Z",
-  "id": "2026-11-22-reel-h27"
+  "media_id": "18101869643430748",
+  "permalink": "https://www.instagram.com/p/DgGIrpdmgSK/",
+  "cards": 8,
+  "published_at": "2026-11-23T19:30:49Z",
+  "id": "2026-11-23-h31"
  },
- "note": "간격 대기 (2.8/4시간)"
+ "note": "성공 1 / 실패 0"
 }
