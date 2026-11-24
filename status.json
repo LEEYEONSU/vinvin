@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-24T14:17:59Z",
- "today_kst": "2026-11-24",
- "pending_count": 5,
+ "checked_at": "2026-11-24T16:30:12Z",
+ "today_kst": "2026-11-25",
+ "pending_count": 4,
  "pending": [
-  {
-   "id": "2026-11-24-h30",
-   "title": "본지 제30호 「왜 750밀리리터인가」",
-   "publish_on": "2026-11-24",
-   "type": "carousel",
-   "cards": 8
-  },
   {
    "id": "2026-11-25-reel-t03",
    "title": "릴스 · 용어판 제3회 「Brut · Sec · Doux」",
@@ -39,13 +32,13 @@
    "cards": 8
   }
  ],
- "posted_count": 33,
+ "posted_count": 34,
  "last_posted": {
-  "media_id": "18101869643430748",
-  "permalink": "https://www.instagram.com/p/DgGIrpdmgSK/",
+  "media_id": "17914875963566923",
+  "permalink": "https://www.instagram.com/p/DgIYzZwm-5p/",
   "cards": 8,
-  "published_at": "2026-11-23T19:30:49Z",
-  "id": "2026-11-23-h31"
+  "published_at": "2026-11-24T16:30:12Z",
+  "id": "2026-11-24-h30"
  },
- "note": "시간대 대기 (현재 23시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
