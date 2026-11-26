@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-25T20:41:01Z",
+ "checked_at": "2026-11-26T13:12:37Z",
  "today_kst": "2026-11-26",
  "pending_count": 4,
  "pending": [
-  {
-   "id": "2026-11-26-g16",
-   "title": "연재만화 제16화 「블라인드 테이스팅」",
-   "publish_on": "2026-11-26",
-   "type": "carousel",
-   "cards": 10
-  },
   {
    "id": "2026-11-27-s09",
    "title": "상품란 제9회 「매운 밥상에 올릴 것」",
@@ -25,6 +18,13 @@
    "cards": 6
   },
   {
+   "id": "2026-11-29-w04",
+   "title": "주보 제4호 「벌레와 눈가림」",
+   "publish_on": "2026-11-29",
+   "type": "carousel",
+   "cards": 10
+  },
+  {
    "id": "2026-12-03-h28",
    "title": "본지 제28호 「와인을 데워 마신 내력」",
    "publish_on": "2026-12-03",
@@ -32,14 +32,13 @@
    "cards": 8
   }
  ],
- "posted_count": 35,
+ "posted_count": 36,
  "last_posted": {
-  "media_id": "17897386008436168",
-  "permalink": "https://www.instagram.com/reel/DgKpJmqTCKV/",
-  "type": "reel",
-  "video": "reel.mp4",
-  "published_at": "2026-11-25T13:31:52Z",
-  "id": "2026-11-25-reel-t03"
+  "media_id": "18112887677618456",
+  "permalink": "https://www.instagram.com/p/DgNLyRgFQsk/",
+  "cards": 10,
+  "published_at": "2026-11-26T13:12:37Z",
+  "id": "2026-11-26-g16"
  },
- "note": "시간대 대기 (현재 5시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
