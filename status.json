@@ -1,15 +1,8 @@
 {
- "checked_at": "2026-11-27T20:20:36Z",
+ "checked_at": "2026-11-28T12:25:01Z",
  "today_kst": "2026-11-28",
  "pending_count": 4,
  "pending": [
-  {
-   "id": "2026-11-28-r06",
-   "title": "독자란 제6회 「와인 용어 받아쓰기」",
-   "publish_on": "2026-11-28",
-   "type": "carousel",
-   "cards": 6
-  },
   {
    "id": "2026-11-29-w04",
    "title": "주보 제4호 「벌레와 눈가림」",
@@ -25,6 +18,13 @@
    "cards": 0
   },
   {
+   "id": "2026-12-01-d04",
+   "title": "단보 제4보 「남은 술은 며칠까지인가」",
+   "publish_on": "2026-12-01",
+   "type": "carousel",
+   "cards": 4
+  },
+  {
    "id": "2026-12-03-h28",
    "title": "본지 제28호 「와인을 데워 마신 내력」",
    "publish_on": "2026-12-03",
@@ -32,13 +32,13 @@
    "cards": 8
   }
  ],
- "posted_count": 37,
+ "posted_count": 38,
  "last_posted": {
-  "media_id": "18140461081652109",
-  "permalink": "https://www.instagram.com/p/DgPwOVPoIIK/",
-  "cards": 8,
-  "published_at": "2026-11-27T13:09:31Z",
-  "id": "2026-11-27-s09"
+  "media_id": "17916249672485949",
+  "permalink": "https://www.instagram.com/p/DgSP7bcoeh1/",
+  "cards": 6,
+  "published_at": "2026-11-28T12:25:01Z",
+  "id": "2026-11-28-r06"
  },
- "note": "시간대 대기 (현재 5시 · 창 18-23시)"
+ "note": "성공 1 / 실패 0"
 }
